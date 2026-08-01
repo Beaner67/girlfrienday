@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Girlfriend's Day — Editorial Scrapbook & Ethereal Archive</title>
+    <meta name="description"
+        content="A poetic, ethereal editorial scrapbook experience dedicated to Girlfriend's Day featuring manga-inspired layout aesthetics, living moving portraits, interactive typography, and delicate visuals.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Great+Vibes&family=Montserrat:wght@200;300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background Audio Track (Online Stream for Production Deployment) -->
+    <audio id="bg-audio" loop preload="auto">
+        <source src="https://drive.google.com/uc?export=download&id=1pVRVIhddzbIoL7H0hil_fxy7scCwXXix" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Aesthetic Music Toggle Button -->
+    <button id="music-toggle-btn" class="music-toggle-btn" title="Toggle Background Music">
+        <span class="music-icon">🎵</span>
+        <span class="music-pulse"></span>
+    </button>
+
+    <!-- Main Container -->
+    <main class="scrapbook-container">
+
+        <!-- ================= SECTION 1: THE ETHEREAL INTRO ================= -->
+        <section id="intro" class="scrapbook-section section-intro">
+            <!-- Background Decorative Texture Grid & Lines -->
+            <div class="scrapbook-grid-bg"></div>
+
+            <!-- Header Issue Tag -->
+            <div class="editorial-tag reveal-on-scroll" data-parallax-speed="0.05">
+                <span class="tag-title">GIRLFRIEND'S DAY SPECIAL ISSUE</span>
+                <span class="tag-divider">•</span>
+                <span class="tag-date">AUGUST 01</span>
+            </div>
+
+            <!-- Scattered Large Serif Text: HAPPY GIRLFRIEND'S DAY -->
+            <h1 class="scattered-heading display-freedom reveal-on-scroll" data-parallax-speed="-0.08">
+                HAPPY GIRLFRIEND'S DAY
+            </h1>
+
+            <!-- Scattered Display Number -->
+            <div class="scattered-number display-15 reveal-on-scroll" data-parallax-speed="0.12">
+
+            </div>
+
+            <!-- Additional Editorial Micro-Typography -->
+            <div class="editorial-subtext intro-subtext reveal-on-scroll">
+                <p class="serif-sub">A CHAPTER OF UNFILTERED ADORATION</p>
+                <p class="script-mini">Crafted with love</p>
+            </div>
+
+            <!-- Right Side Container: Online URL Transparent Watercolor Floral Graphic -->
+            <div class="floral-container-intro reveal-on-scroll" data-parallax-speed="0.06">
+                <div class="floral-wrapper">
+                    <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1QuWhuBinApn9CFxqs0eOjETENW5Uuoa5" alt="Watercolor Blue Floral Graphic"
+                        class="floral-image intro-floral">
+                </div>
+            </div>
+
+            <!-- Decorative Accents -->
+            <div class="cross-accent cross-intro">✦</div>
+        </section>
+
+        <!-- ================= SECTION 2: THE CORE MEMORY ================= -->
+        <section id="core-memory" class="scrapbook-section section-core-memory">
+
+            <!-- Massive Faint Script Word Acting as Background Texture -->
+            <div class="bg-texture-script parallax-bg" data-parallax-speed="-0.15">
+                aesthetic
+            </div>
+
+            <!-- Decorative Film Grain & Crosshatch Overlay -->
+            <div class="texture-overlay"></div>
+
+            <!-- Central Content Layout -->
+            <div class="core-memory-wrapper">
+
+                <!-- Central Image Frame Container with Main Photo & Overlapping Moving Portrait -->
+                <div class="image-frame-container reveal-on-scroll">
+
+                    <!-- Central Image Frame (Square, 4px Solid Dark Border) -->
+                    <div class="image-frame gallery-trigger" data-photo-index="0">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1dCL9dYwsMKeTpoWfHYyVmn6YsDiH3Paw"
+                            alt="Core Memory Photo" class="core-character-img">
+                        <div class="frame-label-overlay">CORE MEMORY • CLICK TO ENLARGE</div>
+                    </div>
+
+                    <!-- Moving Portrait (Living Video Styled as Polaroid Frame - Auto Play Active) -->
+                    <div class="video-container reveal-on-scroll" id="video-polaroid-card" data-parallax-speed="0.07">
+                        <div class="video-tape tape-video-corner"></div>
+                        <div class="video-frame">
+                            <video id="memory-video" class="polaroid-video" autoplay loop muted playsinline defaultMuted
+                                poster="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1dCL9dYwsMKeTpoWfHYyVmn6YsDiH3Paw">
+                                <source src="https://drive.google.com/uc?export=download&id=1EAcl5ZkRNsD34yPN0h4g99OwaNoOdAQA" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <iframe id="gdrive-iframe"
+                                src="https://drive.google.com/file/d/1EAcl5ZkRNsD34yPN0h4g99OwaNoOdAQA/preview"
+                                class="gdrive-embed-iframe" allow="autoplay" style="display: none;"></iframe>
+                            <div class="video-play-overlay" title="Click to play video in Lightbox">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </div>
+                        <div class="video-caption">
+                            <span class="video-script-title">i love you always</span>
+                            <span class="video-sub-meta">LIVING MEMORY // 06.02</span>
+                        </div>
+                    </div>
+
+                    <!-- Floating Silver/Charcoal Cross Emblem -->
+                    <div class="floating-cross reveal-on-scroll" data-parallax-speed="0.1">
+                        <svg class="cross-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M50 0L54 42L96 46L54 50L50 92L46 50L4 46L46 42L50 0Z" fill="currentColor" />
+                            <circle cx="50" cy="46" r="3" fill="#fafafa" />
+                        </svg>
+                    </div>
+
+                    <!-- Washi Tape Effect on Frame -->
+                    <div class="washi-tape tape-frame-corner"></div>
+                </div>
+
+                <!-- Right-aligned Paragraph of Poetic Text -->
+                <div class="poetic-paragraph-container reveal-on-scroll">
+                    <div class="poetic-badge">SOME POETIC SHIIII</div>
+                    <p class="poetic-paragraph">
+                        In the quiet space between laughter and starlight, we found a world built of infinite gentle
+                        moments. Held in memory, soft like an indigo sky that never fades.
+                    </p>
+                    <div class="poetic-signature">my love, forever</div>
+                </div>
+
+            </div>
+
+            <!-- Additional Scrapbook Stamp -->
+            <div class="scrapbook-stamp stamp-core reveal-on-scroll">
+                <span>MEMORIES // 2026</span>
+            </div>
+
+        </section>
+
+        <!-- ================= SECTION 2.5: POLAROID MEMORY SCRAPBOOK GALLERY ================= -->
+        <section id="scrapbook-gallery" class="scrapbook-section section-polaroid-gallery">
+            <div class="gallery-header reveal-on-scroll">
+                <span class="gallery-subtitle">THE MEMORY ARCHIVE</span>
+                <h2 class="gallery-title">OUR POETIC MOMENTS</h2>
+                <p class="gallery-desc">Click any polaroid frame to expand the scrapbook view.</p>
+            </div>
+
+            <!-- Grid of 8 Polaroid Frames -->
+            <div class="polaroid-grid">
+
+                <!-- Polaroid 1: you and me ❤️ -->
+                <div class="polaroid-card reveal-on-scroll gallery-trigger" data-photo-index="0"
+                    style="--rotation: -3deg;">
+                    <div class="polaroid-tape tape-card-tl"></div>
+                    <div class="polaroid-image-container">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1dCL9dYwsMKeTpoWfHYyVmn6YsDiH3Paw" alt="Polaroid Memory 1" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="caption-script">you and me ❤️</span>
+                        <span class="caption-date">06.02</span>
+                    </div>
+                </div>
+
+                <!-- Polaroid 2: type shit 😜 -->
+                <div class="polaroid-card reveal-on-scroll gallery-trigger" data-photo-index="1"
+                    style="--rotation: 4deg;">
+                    <div class="polaroid-tape tape-card-tr"></div>
+                    <div class="polaroid-image-container">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1VnXAm9sU1ESnJb8n7nwPDCwbZ12hnENf" alt="Polaroid Memory 2" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="caption-script">type shit 😜</span>
+                        <span class="caption-date">06.02</span>
+                    </div>
+                </div>
+
+                <!-- Polaroid 3: Silly Mustache -->
+                <div class="polaroid-card reveal-on-scroll gallery-trigger" data-photo-index="2"
+                    style="--rotation: -4deg;">
+                    <div class="polaroid-tape tape-card-bl"></div>
+                    <div class="polaroid-image-container">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=19CfcVACRZT5ODuqG1oNypcllnaXnF6FQ" alt="Polaroid Memory 3" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="caption-script">Silly Mustache</span>
+                        <span class="caption-date">06.0.2</span>
+                    </div>
+                </div>
+
+                <!-- Polaroid 4: my fav -->
+                <div class="polaroid-card reveal-on-scroll gallery-trigger" data-photo-index="3"
+                    style="--rotation: 3deg;">
+                    <div class="polaroid-tape tape-card-br"></div>
+                    <div class="polaroid-image-container">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1giL513bJPRhocKeOMw8y6PN__5eH7Sjl" alt="Polaroid Memory 4" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="caption-script">my fav</span>
+                        <span class="caption-date">06.02</span>
+                    </div>
+                </div>
+
+                <!-- Polaroid 5: Cat Meme Match 🐾 -->
+                <div class="polaroid-card photostrip-card reveal-on-scroll gallery-trigger" data-photo-index="4"
+                    style="--rotation: -2deg;">
+                    <div class="polaroid-tape tape-card-tr"></div>
+                    <div class="polaroid-image-container strip-container">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1mlvdP1gtM-s_M4DefQdgcIUxficLTzJ9" alt="Cat Meme Match Photostrip"
+                            class="polaroid-img strip-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="caption-script">Cat Meme Match 🐾</span>
+                        <span class="caption-date">06.02 • PERFECT PAIR</span>
+                    </div>
+                </div>
+
+                <!-- Polaroid 6: matching energy ✨ -->
+                <div class="polaroid-card reveal-on-scroll gallery-trigger" data-photo-index="5"
+                    style="--rotation: 5deg;">
+                    <div class="polaroid-tape tape-card-tl"></div>
+                    <div class="polaroid-image-container">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1pZDpIYrbpNsrInP4SnEasJj2e5rLMdTp" alt="Polaroid Memory 6" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="caption-script">matching energy ✨</span>
+                        <span class="caption-date">06.02</span>
+                    </div>
+                </div>
+
+                <!-- Polaroid 7: double trouble 😜 -->
+                <div class="polaroid-card reveal-on-scroll gallery-trigger" data-photo-index="6"
+                    style="--rotation: -5deg;">
+                    <div class="polaroid-tape tape-card-bl"></div>
+                    <div class="polaroid-image-container">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=18n9HGSj3YER81lgJaDSxv0S6MIFYRCWi" alt="Polaroid Memory 7" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="caption-script">double trouble 😜</span>
+                        <span class="caption-date">06.02</span>
+                    </div>
+                </div>
+
+                <!-- Polaroid 8: sweetest chaos 💙 -->
+                <div class="polaroid-card reveal-on-scroll gallery-trigger" data-photo-index="7"
+                    style="--rotation: 2deg;">
+                    <div class="polaroid-tape tape-card-br"></div>
+                    <div class="polaroid-image-container">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1eZwLS8MJGyqA1L0Iv__M9ESbU9O8m4Rg" alt="Polaroid Memory 8" class="polaroid-img">
+                    </div>
+                    <div class="polaroid-caption">
+                        <span class="caption-script">sweetest chaos 💙</span>
+                        <span class="caption-date">06.02</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ================= SECTION 3: THE DEDICATION ================= -->
+        <section id="dedication" class="scrapbook-section section-dedication">
+
+            <!-- Overlapping Floral Graphic across Section Transition -->
+            <div class="floral-transition-overlap reveal-on-scroll" data-parallax-speed="-0.09">
+                <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1QuWhuBinApn9CFxqs0eOjETENW5Uuoa5" alt="Overlapping Floral Blossom"
+                    class="floral-image transition-floral">
+            </div>
+
+            <!-- Scattered Script Romantic Words: forever & endless love -->
+            <div class="scattered-script script-fly script-forever reveal-on-scroll" data-parallax-speed="0.14">
+                forever
+            </div>
+            <div class="scattered-script script-sky script-endless-love reveal-on-scroll" data-parallax-speed="-0.07">
+                endless love
+            </div>
+
+            <!-- Decorative Frame Corners -->
+            <div class="corner-border corner-tl"></div>
+            <div class="corner-border corner-tr"></div>
+            <div class="corner-border corner-bl"></div>
+            <div class="corner-border corner-br"></div>
+
+            <!-- Dedication Layout Grid -->
+            <div class="dedication-content">
+
+                <!-- Center Title Accent -->
+                <div class="dedication-header reveal-on-scroll">
+                    <span class="dedication-subtitle">SPECIAL DEDICATION</span>
+                    <h2 class="dedication-title">FOR MY FAVORITE PERSON</h2>
+                </div>
+
+                <!-- Bottom Left: Medium-sized Script Quote -->
+                <div class="script-quote-container reveal-on-scroll">
+                    <blockquote class="script-quote">
+                        "To the one who makes every ordinary day feel like a poetic dream written in flowers and soft
+                        blue light..."
+                    </blockquote>
+                </div>
+
+                <!-- Bottom Right: Small Left-aligned Serif Sub-quote -->
+                <div class="serif-subquote-container reveal-on-scroll">
+                    <p class="serif-subquote">
+                        HAPPY GIRLFRIEND'S DAY<br>
+                        <span class="subquote-accent">— ALWAYS & FOREVER</span>
+                    </p>
+                    <div class="editorial-meta-line">
+                        <span>FROM MINE</span>
+                        <span>•</span>
+                        <span>TO YOURS</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Circular Seal / Stamp -->
+            <div class="circular-seal reveal-on-scroll">
+                <svg viewBox="0 0 100 100" class="seal-svg">
+                    <path id="curve" d="M 20, 50 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" fill="transparent" />
+                    <text class="seal-text">
+                        <textPath href="#curve" startOffset="0%">GIRLFRIEND'S DAY • AUGUST 1 • </textPath>
+                    </text>
+                </svg>
+                <div class="seal-center">✦</div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Lightbox Modal for Photo & Video Gallery -->
+    <div id="lightbox-modal" class="lightbox-modal">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-content">
+            <button class="lightbox-close" id="lightbox-close">&times;</button>
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</button>
+            <div class="lightbox-frame">
+                <!-- Image Display -->
+                <img id="lightbox-img" src="" alt="Enlarged Memory Photo">
+
+                <!-- Video Display -->
+                <video id="lightbox-video" controls autoplay playsinline style="display: none;"></video>
+
+                <!-- Google Drive iframe Display -->
+                <iframe id="lightbox-iframe" src="" allow="autoplay"
+                    style="display: none; width: 100%; height: 60vh; border: none;"></iframe>
+
+                <div class="lightbox-caption-bar">
+                    <span id="lightbox-script" class="lightbox-script">Memory</span>
+                    <span id="lightbox-meta" class="lightbox-meta">VOL. 01</span>
+                </div>
+            </div>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Minimalist Editorial Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p class="footer-copy">ARCHIVED WITH LOVE. fROM YOIHENBA</p>
+            <div class="footer-links">
+                <a href="#intro">TOP</a>
+                <span>/</span>
+                <a href="#core-memory">GALLERY</a>
+                <span>/</span>
+                <a href="#scrapbook-gallery">MEMORIES</a>
+                <span>/</span>
+                <a href="#dedication">DEDICATION</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script File -->
+    <script src="script.js"></script>
+</body>
+
+</html>

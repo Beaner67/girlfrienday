@@ -30,10 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* --------------------------------------------------------------------------
-     * 0.5 Background Music Automatic Playback & Control
+     * 0.5 Background Music Automatic Playback & Control (Deployment Ready)
      * -------------------------------------------------------------------------- */
     const bgAudio = document.getElementById('bg-audio');
     const musicBtn = document.getElementById('music-toggle-btn');
+    const musicBanner = document.getElementById('music-prompt-banner');
 
     function startMusic() {
         if (!bgAudio) return;
@@ -42,31 +43,33 @@ document.addEventListener('DOMContentLoaded', () => {
         if (playPromise !== undefined) {
             playPromise.then(() => {
                 if (musicBtn) musicBtn.classList.add('is-playing');
+                if (musicBanner) musicBanner.classList.remove('is-visible');
                 console.log("Background music playing automatically");
             }).catch(err => {
-                console.log("Autoplay waiting for initial scroll/interaction:", err);
+                console.log("Autoplay waiting for initial interaction:", err);
+                if (musicBanner) musicBanner.classList.add('is-visible');
             });
         }
     }
 
-    // Attempt immediate autoplay on load
+    // Attempt immediate autoplay on DOM load & window load
     startMusic();
+    window.addEventListener('load', startMusic);
 
-    // Trigger playback on first touch, scroll, click, or keydown (bypasses browser autoplay policy)
-    const interactionEvents = ['click', 'touchstart', 'scroll', 'keydown'];
-    const handleFirstUserInteraction = () => {
+    // Trigger playback on any global user interaction (bypasses browser autoplay blocks)
+    const interactionEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'wheel', 'keydown'];
+    const handleUserInteraction = () => {
         if (bgAudio && bgAudio.paused) {
             startMusic();
         }
-        // Also trigger video play on interaction if paused
         if (memoryVideo && memoryVideo.paused) {
             memoryVideo.play().catch(() => {});
         }
-        interactionEvents.forEach(evt => window.removeEventListener(evt, handleFirstUserInteraction));
+        interactionEvents.forEach(evt => window.removeEventListener(evt, handleUserInteraction));
     };
 
     interactionEvents.forEach(evt => {
-        window.addEventListener(evt, handleFirstUserInteraction, { passive: true, once: true });
+        window.addEventListener(evt, handleUserInteraction, { passive: true });
     });
 
     // Toggle button click handler
@@ -76,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (bgAudio.paused) {
                 bgAudio.play();
                 musicBtn.classList.add('is-playing');
+                if (musicBanner) musicBanner.classList.remove('is-visible');
             } else {
                 bgAudio.pause();
                 musicBtn.classList.remove('is-playing');
@@ -138,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             type: 'video',
-            src: 'https://drive.google.com/uc?export=download&id=1EAcl5ZkRNsD34yPN0h4g99OwaNoOdAQA',
+            src: './assets/memory_video.mp4',
             gdrivePreview: 'https://drive.google.com/file/d/1EAcl5ZkRNsD34yPN0h4g99OwaNoOdAQA/preview',
             title: 'i love you always',
             meta: 'LIVING MEMORY // 06.02'
@@ -398,5 +402,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowLeft') prevPhoto();
     });
 
-    console.log("Girlfriend's Day Editorial Scrapbook — Deployment updates ready.");
+    console.log("Girlfriend's Day Editorial Scrapbook — Background Audio deployment ready.");
 });

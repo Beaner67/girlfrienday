@@ -21,8 +21,9 @@
 
 <body>
 
-    <!-- Background Audio Track (Online Stream for Production Deployment) -->
+    <!-- Background Audio Track (Static Local CDN Asset + Online Fallback) -->
     <audio id="bg-audio" loop preload="auto">
+        <source src="./assets/bg_music.mp3" type="audio/mpeg">
         <source src="https://drive.google.com/uc?export=download&id=1pVRVIhddzbIoL7H0hil_fxy7scCwXXix" type="audio/mpeg">
     </audio>
 
@@ -31,6 +32,11 @@
         <span class="music-icon">🎵</span>
         <span class="music-pulse"></span>
     </button>
+
+    <!-- Music Tap-to-Play Prompt Banner -->
+    <div id="music-prompt-banner" class="music-prompt-banner">
+        <span>Tap anywhere to play background music 🎵</span>
+    </div>
 
     <!-- Main Container -->
     <main class="scrapbook-container">
@@ -105,6 +111,7 @@
                         <div class="video-frame">
                             <video id="memory-video" class="polaroid-video" autoplay loop muted playsinline defaultMuted
                                 poster="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1dCL9dYwsMKeTpoWfHYyVmn6YsDiH3Paw">
+                                <source src="./assets/memory_video.mp4" type="video/mp4">
                                 <source src="https://drive.google.com/uc?export=download&id=1EAcl5ZkRNsD34yPN0h4g99OwaNoOdAQA" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>

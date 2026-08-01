@@ -9,21 +9,21 @@ document.addEventListener('DOMContentLoaded', () => {
      * -------------------------------------------------------------------------- */
     // Prevent Pinch-to-zoom on iOS Safari
     document.addEventListener('gesturestart', function (e) {
-        e.preventDefault();
+        if (e.cancelable) e.preventDefault();
     });
     document.addEventListener('gesturechange', function (e) {
-        e.preventDefault();
+        if (e.cancelable) e.preventDefault();
     });
     document.addEventListener('gestureend', function (e) {
-        e.preventDefault();
+        if (e.cancelable) e.preventDefault();
     });
 
-    // Prevent Double-Tap Zoom
+    // Prevent Double-Tap Zoom safely without non-cancelable touchend warnings
     let lastTouchEnd = 0;
     document.addEventListener('touchend', function (e) {
         const now = (new Date()).getTime();
         if (now - lastTouchEnd <= 300) {
-            e.preventDefault();
+            if (e.cancelable) e.preventDefault();
         }
         lastTouchEnd = now;
     }, false);
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function safePlayAudio() {
         if (!bgAudio || isAudioPlaying || isAudioLoading) return;
-        
+
         isAudioLoading = true;
         bgAudio.volume = 0.5;
 
@@ -75,7 +75,7 @@ document.addEventListener('DOMContentLoaded', () => {
             safePlayAudio();
         }
         if (memoryVideo && memoryVideo.paused) {
-            memoryVideo.play().catch(() => {});
+            memoryVideo.play().catch(() => { });
         }
     }
 
@@ -246,13 +246,13 @@ document.addEventListener('DOMContentLoaded', () => {
         parallaxElements.forEach(el => {
             const speed = parseFloat(el.getAttribute('data-parallax-speed')) || 0;
             const parentSection = el.closest('.scrapbook-section');
-            
+
             if (parentSection) {
                 const rect = parentSection.getBoundingClientRect();
                 if (rect.top < window.innerHeight && rect.bottom > 0) {
                     const relativeScroll = scrollY - (parentSection.offsetTop - window.innerHeight / 2);
                     const translateY = relativeScroll * speed * -0.5;
-                    
+
                     if (el.classList.contains('script-physical')) {
                         el.style.transform = `translateY(${translateY}px) rotate(-7deg)`;
                     } else if (el.classList.contains('script-fly')) {
@@ -322,14 +322,14 @@ document.addEventListener('DOMContentLoaded', () => {
     function openLightbox(index) {
         currentPhotoIndex = index;
         const data = photoData[currentPhotoIndex];
-        
+
         if (data.type === 'video') {
             lightboxImg.style.display = 'none';
             if (lightboxIframe) lightboxIframe.style.display = 'none';
 
             lightboxVideo.style.display = 'block';
             lightboxVideo.src = data.src;
-            lightboxVideo.onerror = function() {
+            lightboxVideo.onerror = function () {
                 if (data.gdrivePreview && lightboxIframe) {
                     lightboxVideo.style.display = 'none';
                     lightboxIframe.style.display = 'block';
@@ -415,5 +415,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowLeft') prevPhoto();
     });
 
-    console.log("Girlfriend's Day Editorial Scrapbook — Audio handler fully resolved.");
+    console.log("Girlfriend's Day Editorial Scrapbook — Network and Touch warnings resolved.");
 });

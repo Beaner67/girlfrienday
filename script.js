@@ -36,54 +36,64 @@ document.addEventListener('DOMContentLoaded', () => {
     const musicBtn = document.getElementById('music-toggle-btn');
     const musicBanner = document.getElementById('music-prompt-banner');
 
-    let musicPlaying = false;
+    let isAudioPlaying = false;
+    let isAudioLoading = false;
 
-    function playAudio() {
-        if (!bgAudio) return;
+    function safePlayAudio() {
+        if (!bgAudio || isAudioPlaying || isAudioLoading) return;
+        
+        isAudioLoading = true;
         bgAudio.volume = 0.5;
+
         const promise = bgAudio.play();
         if (promise !== undefined) {
             promise.then(() => {
-                musicPlaying = true;
+                isAudioLoading = false;
+                isAudioPlaying = true;
                 if (musicBtn) musicBtn.classList.add('is-playing');
                 if (musicBanner) musicBanner.classList.remove('is-visible');
-                console.log("Audio started playing successfully!");
+                console.log("🎵 Background music playing!");
             }).catch(err => {
-                console.log("Audio play waiting for user gesture:", err);
-                if (musicBanner) musicBanner.classList.add('is-visible');
+                isAudioLoading = false;
+                isAudioPlaying = false;
+                if (err.name === 'NotAllowedError') {
+                    if (musicBanner) musicBanner.classList.add('is-visible');
+                }
             });
+        } else {
+            isAudioLoading = false;
         }
     }
 
     // Try playing immediately on DOM load & window load
-    playAudio();
-    window.addEventListener('load', playAudio);
+    safePlayAudio();
+    window.addEventListener('load', safePlayAudio);
 
-    // Keep listening for ANY user gesture until audio is playing
-    const gestureEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown'];
-
+    // Global gesture listener to unlock audio on first tap/click
     function handleUserGesture() {
-        if (!musicPlaying && bgAudio && bgAudio.paused) {
-            playAudio();
+        if (!isAudioPlaying && !isAudioLoading) {
+            safePlayAudio();
         }
         if (memoryVideo && memoryVideo.paused) {
             memoryVideo.play().catch(() => {});
         }
     }
 
-    gestureEvents.forEach(evt => {
-        document.addEventListener(evt, handleUserGesture, { capture: true, passive: true });
-    });
+    // Bind clean non-overlapping event listeners
+    window.addEventListener('click', handleUserGesture, { passive: true });
+    window.addEventListener('touchstart', handleUserGesture, { passive: true, once: false });
+    window.addEventListener('keydown', handleUserGesture, { passive: true });
 
     // Toggle button click handler
     if (musicBtn && bgAudio) {
         musicBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (bgAudio.paused) {
-                playAudio();
+                safePlayAudio();
             } else {
                 bgAudio.pause();
-                musicPlaying = false;
+                isAudioPlaying = false;
+                isAudioLoading = false;
                 musicBtn.classList.remove('is-playing');
                 if (musicBanner) musicBanner.classList.remove('is-visible');
             }
@@ -405,5 +415,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowLeft') prevPhoto();
     });
 
-    console.log("Girlfriend's Day Editorial Scrapbook — Audio handler fixed.");
+    console.log("Girlfriend's Day Editorial Scrapbook — Audio handler fully resolved.");
 });

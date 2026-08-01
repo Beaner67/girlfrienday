@@ -21,8 +21,8 @@
 
 <body>
 
-    <!-- Background Audio Track (Static Local CDN Asset + Online Fallback) -->
-    <audio id="bg-audio" loop preload="auto">
+    <!-- Background Audio Track (Autoplay Enabled with Multiple Fallbacks) -->
+    <audio id="bg-audio" autoplay loop preload="auto">
         <source src="./assets/bg_music.mp3" type="audio/mpeg">
         <source src="https://drive.google.com/uc?export=download&id=1pVRVIhddzbIoL7H0hil_fxy7scCwXXix" type="audio/mpeg">
     </audio>
@@ -35,7 +35,7 @@
 
     <!-- Music Tap-to-Play Prompt Banner -->
     <div id="music-prompt-banner" class="music-prompt-banner">
-        <span>Tap anywhere to play background music 🎵</span>
+        <span>Tap anywhere to play music 🎵</span>
     </div>
 
     <!-- Main Container -->

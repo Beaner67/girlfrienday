@@ -30,46 +30,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /* --------------------------------------------------------------------------
-     * 0.5 Background Music Automatic Playback & Control (Deployment Ready)
+     * 0.5 Background Music Automatic Playback & Control (Bulletproof Deployment)
      * -------------------------------------------------------------------------- */
     const bgAudio = document.getElementById('bg-audio');
     const musicBtn = document.getElementById('music-toggle-btn');
     const musicBanner = document.getElementById('music-prompt-banner');
 
-    function startMusic() {
+    let musicPlaying = false;
+
+    function playAudio() {
         if (!bgAudio) return;
-        bgAudio.volume = 0.45;
-        const playPromise = bgAudio.play();
-        if (playPromise !== undefined) {
-            playPromise.then(() => {
+        bgAudio.volume = 0.5;
+        const promise = bgAudio.play();
+        if (promise !== undefined) {
+            promise.then(() => {
+                musicPlaying = true;
                 if (musicBtn) musicBtn.classList.add('is-playing');
                 if (musicBanner) musicBanner.classList.remove('is-visible');
-                console.log("Background music playing automatically");
+                console.log("Audio started playing successfully!");
             }).catch(err => {
-                console.log("Autoplay waiting for initial interaction:", err);
+                console.log("Audio play waiting for user gesture:", err);
                 if (musicBanner) musicBanner.classList.add('is-visible');
             });
         }
     }
 
-    // Attempt immediate autoplay on DOM load & window load
-    startMusic();
-    window.addEventListener('load', startMusic);
+    // Try playing immediately on DOM load & window load
+    playAudio();
+    window.addEventListener('load', playAudio);
 
-    // Trigger playback on any global user interaction (bypasses browser autoplay blocks)
-    const interactionEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'scroll', 'wheel', 'keydown'];
-    const handleUserInteraction = () => {
-        if (bgAudio && bgAudio.paused) {
-            startMusic();
+    // Keep listening for ANY user gesture until audio is playing
+    const gestureEvents = ['click', 'touchstart', 'touchend', 'pointerdown', 'keydown'];
+
+    function handleUserGesture() {
+        if (!musicPlaying && bgAudio && bgAudio.paused) {
+            playAudio();
         }
         if (memoryVideo && memoryVideo.paused) {
             memoryVideo.play().catch(() => {});
         }
-        interactionEvents.forEach(evt => window.removeEventListener(evt, handleUserInteraction));
-    };
+    }
 
-    interactionEvents.forEach(evt => {
-        window.addEventListener(evt, handleUserInteraction, { passive: true });
+    gestureEvents.forEach(evt => {
+        document.addEventListener(evt, handleUserGesture, { capture: true, passive: true });
     });
 
     // Toggle button click handler
@@ -77,12 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
         musicBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             if (bgAudio.paused) {
-                bgAudio.play();
-                musicBtn.classList.add('is-playing');
-                if (musicBanner) musicBanner.classList.remove('is-visible');
+                playAudio();
             } else {
                 bgAudio.pause();
+                musicPlaying = false;
                 musicBtn.classList.remove('is-playing');
+                if (musicBanner) musicBanner.classList.remove('is-visible');
             }
         });
     }
@@ -402,5 +405,5 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'ArrowLeft') prevPhoto();
     });
 
-    console.log("Girlfriend's Day Editorial Scrapbook — Background Audio deployment ready.");
+    console.log("Girlfriend's Day Editorial Scrapbook — Audio handler fixed.");
 });
